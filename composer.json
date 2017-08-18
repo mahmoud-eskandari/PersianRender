@@ -1,0 +1,22 @@
+{
+    "name": "eskandari/persianrender",
+    "type": "library",
+    "description": "PersianRender,Free persian letter conertor for using in php GD, etc.",
+    "keywords": ["text","image","gd","render","persian","persianletter"],
+    "homepage": "http://webafrooz.com",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Mahmoud Eskandari",
+            "email": "info@webafrooz.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "PersianRender\\": "lib/"
+        }
+    }
+}
