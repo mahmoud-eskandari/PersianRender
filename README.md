@@ -24,7 +24,7 @@ You can install this package using [composer](https://getcomposer.org). Add this
 using in the Gd image
 ```
 
-  $text  = \PersianRender\PersianRender::render('فارسی');
+  $text  = \PersianRender\PersianRender::render('فارسی',true); //Reversed text for GD
   
   imagettftext ( $image ,  $size ,  $angle , $x , $y ,$color , $fontfile , $text );
   
