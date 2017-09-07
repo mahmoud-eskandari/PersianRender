@@ -1,6 +1,6 @@
 <?php
 
-namespace PersianRender;
+namespace PPersianRender;
 /**
  * The GNU License (GNU v 3.0)
  *
