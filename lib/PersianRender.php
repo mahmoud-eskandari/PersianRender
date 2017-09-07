@@ -60,7 +60,7 @@ class PersianRender
         'ؤ' => ['ﺆ', 'ﺆ', ''],
         'إ' => ['ﺈ', 'ﺈ', 'ﺇ'],
         'ئ' => ['ﺊ', 'ﺌ', 'ﺋ'],
-        'ة' => ['ﺔ', 'ﺘ', 'ﺗ']
+        'ة' => ['ﺔ', 'ﺘ', 'ﺗ'],
     ];
 
     /**
@@ -130,7 +130,7 @@ class PersianRender
     private static function howChar($l, $char, $r)
     {
         if(!isset(self::$N_LIST[$char])) {
-            return '';
+            return $char;
         }
         $Result = 0;
         if(
