@@ -5,10 +5,9 @@ namespace PersianRender;
  * The GNU License (GNU v 3.0)
  *
  * Coyright Under GNU 2.0 License.
- * Copyright 2017 Webafrooz.com.
+ * @Copyright 2017 Webafrooz.com.
  * @package    PersianRender
  * @author     Mahmoud Eskandari <info@webafrooz.com>
- * @copyright  20017 mahmoud eskandari
  * @link       https://github.com/mahmoud-eskandari/PersianRender
  * @see        PersianRender
  * @version    0.1
