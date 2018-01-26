@@ -4,7 +4,7 @@
     "description": "PersianRender,Free persian letter conertor for using in php GD, etc.",
     "keywords": ["text","image","gd","render","persian","persianletter"],
     "homepage": "http://webafrooz.com",
-    "license": "GNU",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Mahmoud Eskandari",
