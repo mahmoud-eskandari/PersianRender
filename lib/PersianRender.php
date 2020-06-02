@@ -1,12 +1,15 @@
 <?php
 
 namespace PersianRender;
+
 /**
  * The GNU License (GNU v 3.0)
  *
- * @Copyright 2017 Webafrooz.com.
+ * Coyright Under GNU 2.0 License.
+ * Copyright 2017 Webafrooz.com.
  * @package    PersianRender
  * @author     Mahmoud Eskandari <info@webafrooz.com>
+ * @copyright  20017 mahmoud eskandari
  * @link       https://github.com/mahmoud-eskandari/PersianRender
  * @see        PersianRender
  * @version    0.1
@@ -62,6 +65,46 @@ class PersianRender
     ];
 
     /**
+     * Symbols list
+     *
+     * @var array
+     */
+    private static $symbols = [
+        '-' => '-',
+        '–' => '-',
+        '،' => '،',
+        ',' => '،',
+        '.' => '.',
+        ':' => ':',
+        ':' => ':',
+        '?' => '؟',
+        '؟' => '؟',
+        '*' => '*',
+        ')' => '(',
+        '(' => ')',
+        '/' => '/',
+        '0' => '۰',
+        '1' => '۱',
+        '۱' => '۱',
+        '2' => '۲',
+        '۲' => '۲',
+        '3' => '۳',
+        '۳' => '۳',
+        '4' => '۴',
+        '۴' => '۴',
+        '5' => '۵',
+        '۵' => '۵',
+        '6' => '۶',
+        '۶' => '۶',
+        '7' => '۷',
+        '۷' => '۷',
+        '8' => '۸',
+        '۸' => '۸',
+        '9' => '۹',
+        '۹' => '۹',
+    ];
+
+    /**
      * Render Persian Letter
      * @param $str
      * @param bool $reverse
@@ -76,15 +119,15 @@ class PersianRender
         $out = [];
 
         $i = 0;
-        while(isset($str[$i])) {
+        while (isset($str[$i])) {
             $l = $i - 1;
-            if(isset($str[$l])) {
+            if (isset($str[$l])) {
                 $l = $str[$l];
             } else {
                 $l = false;
             }
             $r = $i + 1;
-            if(isset($str[$r])) {
+            if (isset($str[$r])) {
                 $r = $str[$r];
             } else {
                 $r = false;
@@ -93,7 +136,7 @@ class PersianRender
             $i++;
         }
 
-        if($reverse) {
+        if ($reverse) {
             $out = array_reverse($out);
         }
 
@@ -111,7 +154,7 @@ class PersianRender
         $f = array('۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', '۰');
         $t = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
 
-        if($persian_to_latin) {
+        if ($persian_to_latin) {
             return str_replace($f, $t, $val);
         }
 
@@ -127,18 +170,28 @@ class PersianRender
      */
     private static function howChar($l, $char, $r)
     {
-        if(!isset(self::$N_LIST[$char])) {
-            return $char;
+        if (isset(self::$symbols[$char])) {
+            return self::$symbols[$char];
         }
+
+        if (!isset(self::$N_LIST[$char])) {
+            if ($char === " ") {
+                return ' ';
+            }
+
+            return '';
+        }
+
         $Result = 0;
-        if(
+        if (
             !empty($r) && array_key_exists($r, self::$N_LIST)
             && !empty(self::$N_LIST[$char][2])
             && !empty(self::$N_LIST[$r][0])
         ) {
             $Result += 4;
         }
-        if(
+
+        if (
             !empty($l)
             && array_key_exists($l, self::$N_LIST)
             && !empty(self::$N_LIST[$char][0])
@@ -146,13 +199,14 @@ class PersianRender
         ) {
             $Result += 2;
         }
-        if($Result === 6) {
+
+        if ($Result === 6) {
             return self::$N_LIST[$char][1];
         }
-        if($Result === 4) {
+        if ($Result === 4) {
             return self::$N_LIST[$char][2];
         }
-        if($Result === 2) {
+        if ($Result === 2) {
             return self::$N_LIST[$char][0];
         }
         return $char;
@@ -164,13 +218,13 @@ class PersianRender
      * @param int $string_length
      * @return array
      */
-	public static function mb_str_split($string, $string_length = 1)
+    public static function mb_str_split($string, $string_length = 1)
     {
-        if(mb_strlen($string) > $string_length || !$string_length) {
+        if (mb_strlen($string) > $string_length || !$string_length) {
             do {
                 $parts[] = mb_substr($string, 0, $string_length);
-                $string = mb_substr($string, $string_length);
-            } while(!empty($string));
+                $string  = mb_substr($string, $string_length);
+            } while (!empty($string));
         } else {
             $parts = array($string);
         }
