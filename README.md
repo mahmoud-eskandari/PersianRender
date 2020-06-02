@@ -3,7 +3,7 @@
 
 # Installation
 
-## Using Composer
+## Composer
 
 You can install this package using [composer](https://getcomposer.org). Add this package to your `composer.json`:  
 
@@ -13,7 +13,7 @@ You can install this package using [composer](https://getcomposer.org). Add this
 }
 ```
 
-# manual
+# Manual
 
 ```
 
@@ -21,11 +21,10 @@ You can install this package using [composer](https://getcomposer.org). Add this
 
 ```
 
-using in the Gd image
+Gd image example
 ```
 
   $text  = \PersianRender\PersianRender::render('فارسی',true); //Reversed text for GD
-  
-  imagettftext ( $image ,  $size ,  $angle , $x , $y ,$color , $fontfile , $text );
+ imagettftext ( $image ,  $size ,  $angle , $x , $y ,$color , $fontfile , $text );
   
 ```
