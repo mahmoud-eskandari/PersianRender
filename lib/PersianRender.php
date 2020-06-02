@@ -9,7 +9,7 @@ namespace PersianRender;
  * Copyright 2017 Webafrooz.com.
  * @package    PersianRender
  * @author     Mahmoud Eskandari <info@webafrooz.com>
- * @copyright  20017 mahmoud eskandari
+ * @copyright  2017 mahmoud eskandari
  * @link       https://github.com/mahmoud-eskandari/PersianRender
  * @see        PersianRender
  * @version    0.1
