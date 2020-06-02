@@ -110,7 +110,7 @@ class PersianRender
      * @param bool $reverse
      * @return string
      */
-    public static function render($str, $reverse = false)
+    public static function render($str, $reverse = true)
     {
         //
         $str = str_replace(['ي', "\0"], ['ی', ''], $str);
