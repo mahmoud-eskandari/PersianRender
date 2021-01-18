@@ -15,8 +15,7 @@ namespace PersianRender;
  * @version    0.1
  */
 
-class PersianRender
-{
+class PersianRender {
     /**
      * Charachter List
      * @var array
@@ -105,22 +104,46 @@ class PersianRender
         '۹' => '۹',
     ];
 
+    private static $numbers = [
+        "۱" => "۱",
+        "۲" => "۲",
+        "۳" => "۳",
+        "۴" => "۴",
+        "۵" => "۵",
+        "۶" => "۶",
+        "۷" => "۷",
+        "۸" => "۸",
+        "۹" => "۹",
+        "۰" => "۰"
+    ];
+
     /**
      * Render Persian Letter
      * @param $str
      * @param bool $reverse
      * @return string
      */
-    public static function render($str, $reverse = true)
-    {
-        //
+    public static function render($str, $reverse = true, $fixNumberOrder = false) {
         $str = str_replace(['ي', "\0"], ['ی', ''], $str);
         $str = self::numeric_replace($str);
         $str = self::mb_str_split(trim($str));
         $out = [];
 
         $i = 0;
+        $hold = [];
         while (isset($str[$i])) {
+            if (isset(self::$numbers[$str[$i]]) && $fixNumberOrder === true) {
+                $hold[] = $str[$i];
+                $i++;
+                if (!isset(self::$numbers[$str[$i]])) {
+                    $hold = array_reverse($hold);
+                    for ($h = 0; $h < count($hold); $h++) {
+                        $out[] = $hold[$h];
+                    }
+                    $hold = [];
+                }
+                continue;
+            }
             $l = $i - 1;
             if (isset($str[$l])) {
                 $l = $str[$l];
@@ -150,8 +173,7 @@ class PersianRender
      * @param bool $persian_to_latin
      * @return mixed
      */
-    public static function numeric_replace($val, $persian_to_latin = false)
-    {
+    public static function numeric_replace($val, $persian_to_latin = false) {
         $f = array('۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', '۰');
         $t = array('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
 
@@ -169,8 +191,7 @@ class PersianRender
      * @param $r
      * @return bool|string
      */
-    private static function howChar($l, $char, $r)
-    {
+    private static function howChar($l, $char, $r) {
         if (isset(self::$symbols[$char])) {
             return self::$symbols[$char];
         }
@@ -219,8 +240,7 @@ class PersianRender
      * @param int $string_length
      * @return array
      */
-    public static function mb_str_split($string, $string_length = 1)
-    {
+    public static function mb_str_split($string, $string_length = 1) {
         if (mb_strlen($string) > $string_length || !$string_length) {
             do {
                 $parts[] = mb_substr($string, 0, $string_length);
@@ -231,5 +251,4 @@ class PersianRender
         }
         return $parts;
     }
-
 }
