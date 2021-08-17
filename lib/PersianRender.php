@@ -219,7 +219,7 @@ class PersianRender {
             if ($fixNumberOrder === true && (isset(self::$numbers[$str[$i]])) || ($str[$i] === "." && isset(self::$numbers[$str[$i + 1]]))) {
                 $hold[] = $str[$i];
                 $i++;
-                if (!isset(self::$numbers[$str[$i]]) && $str[$i] !== ".") {
+                if (!isset($str[$i]) || (!isset(self::$numbers[$str[$i]]) && $str[$i] !== ".")) {
                     $hold = array_reverse($hold);
                     for ($h = 0; $h < count($hold); $h++) {
                         $out[] = $hold[$h];
