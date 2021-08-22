@@ -46,7 +46,7 @@ class PersianRender {
         'غ' => ['ﻎ', 'ﻐ', 'ﻏ'],
         'ف' => ['ﻒ', 'ﻔ', 'ﻓ'],
         'ق' => ['ﻖ', 'ﻘ', 'ﻗ'],
-        'ک' => ['ﻚ', 'ﻜ', 'ﻛ'],
+        'ک' => ['ﮏ', 'ﻜ', 'ﻛ'],
         'گ' => ['ﮓ', 'ﮕ', 'ﮔ'],
         'ل' => ['ﻞ', 'ﻠ', 'ﻟ'],
         'م' => ['ﻢ', 'ﻤ', 'ﻣ'],
@@ -216,10 +216,10 @@ class PersianRender {
         $i = 0;
         $hold = [];
         while (isset($str[$i])) {
-            if (isset(self::$numbers[$str[$i]]) && $fixNumberOrder === true) {
+            if ($fixNumberOrder === true && (isset(self::$numbers[$str[$i]])) || ($str[$i] === "." && isset(self::$numbers[$str[$i + 1]]))) {
                 $hold[] = $str[$i];
                 $i++;
-                if (!isset(self::$numbers[$str[$i]])) {
+                if (!isset($str[$i]) || (!isset(self::$numbers[$str[$i]]) && $str[$i] !== ".")) {
                     $hold = array_reverse($hold);
                     for ($h = 0; $h < count($hold); $h++) {
                         $out[] = $hold[$h];
