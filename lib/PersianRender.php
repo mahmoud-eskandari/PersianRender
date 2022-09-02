@@ -231,7 +231,7 @@ class PersianRender {
             if (isset(self::$latinAlphabet[$str[$i]])) {
                 $hold[] = $str[$i];
                 $i++;
-                if (!isset(self::$latinAlphabet[$str[$i]])) {
+                if (isset($str[$i]) && !isset(self::$latinAlphabet[$str[$i]])) {
                     $hold = array_reverse($hold);
                     for ($h = 0; $h < count($hold); $h++) {
                         $out[] = $hold[$h];
