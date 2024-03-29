@@ -28,3 +28,6 @@ Gd image example
  imagettftext ( $image ,  $size ,  $angle , $x , $y ,$color , $fontfile , $text );
   
 ```
+<p align="center"><a href="#">نمونه فارسی نویسی با فونت دانا<img src="./example-1.png" alt="Image"></a></p>
+<p align="center"><a href="#">نمونه فارسی نویسی با فونت کلمه<img src="./example-2.png" alt="Image"></a></p>
+
